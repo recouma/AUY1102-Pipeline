@@ -1,4 +1,4 @@
-export abstract class StringValueObject {
+	export abstract class StringValueObject {
   readonly value: string;
 
   constructor(value: string) {
@@ -13,9 +13,9 @@ export abstract class StringValueObject {
     return !this.value;
   }
 
-  differentTo(anotherValue: string): boolean {
-    return this.value !== anotherValue;
-  }
+differentTo(anotherValue: string): boolean {
+  return this.value !== anotherValue;
+}
 
   hasMoreCharacterThan(length = 30): boolean {
     return this.value.length > length ? true : false;
