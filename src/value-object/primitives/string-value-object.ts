@@ -5,24 +5,32 @@ export abstract class StringValueObject {
     this.value = value;
   }
 
-  equalsTo(anotherValue: string): boolean {
-    return this.value === anotherValue;
+  // CORRECCIÓN: Aceptamos string O StringValueObject
+  equalsTo(anotherValue: string | StringValueObject): boolean {
+    const other = anotherValue instanceof StringValueObject 
+      ? anotherValue.value 
+      : anotherValue;
+    return this.value === other;
   }
 
   isEmpty(): boolean {
     return !this.value;
   }
 
-  differentTo(anotherValue: string): boolean {
-    return this.value !== anotherValue;
+  // CORRECCIÓN: Lo mismo aquí
+  differentTo(anotherValue: string | StringValueObject): boolean {
+    const other = anotherValue instanceof StringValueObject 
+      ? anotherValue.value 
+      : anotherValue;
+    return this.value !== other;
   }
 
   hasMoreCharacterThan(length = 30): boolean {
-    return this.value.length > length ? true : false;
+    return this.value.length > length;
   }
 
   hasLessCharacterThan(length = 5): boolean {
-    return this.value.length < length ? true : false;
+    return this.value.length < length;
   }
 
   toString(): string {
